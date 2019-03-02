@@ -1,11 +1,24 @@
-HACK-JU
+Welcome to HACK-JU MEDICARE
+Developers- Sabuj Jana, Ravindra Kumar , Shuvam Shah
+Technologies Used---- HTML,CSS,JS,JQUERY,AJAX,BOOTSTRAP,GIT,FLASK,PYTHON,ML,AI,API
 
-## All Features Request your Location
+# Diagnose Yourself
 
-# Diagnose Your Disease 
 
-# Find  Hospitals In Your Proximity 
 
 # Find Doctors Nearby
+####This feature utility asks for your location.
+####Once you enable location, the scripts work in the background to fetch data of the nearby doctors in your area and renders all the data obtained in a beautiful table.
+####The images, names, and degrees of the specified doctors are displayed.
 
-# Wiki About Your Disease  
+# Find Hospitals Nearby
+####This feature utility asks for your location.
+####This feature utiility uses Google Maps API to visually display all the nearby doctors in your area.
+
+# Know Your Disease
+#### This is a Wiki-type feature.
+####Type in any disease name, wait a few secs, it'll gather all the GK and info you need to know about the disease you are suffering from.
+
+
+
+
