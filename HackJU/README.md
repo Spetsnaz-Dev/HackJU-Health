@@ -3,7 +3,7 @@ Developers- Sabuj Jana, Ravindra Kumar , Shuvam Shah
 Technologies Used---- HTML,CSS,JS,JQUERY,AJAX,BOOTSTRAP,GIT,FLASK,PYTHON,ML,AI,API
 
 # Diagnose Yourself
-
+#### Select your symptoms and get to predict your disease. Forget Doctors!!!!
 
 
 # Find Doctors Nearby
