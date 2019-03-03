@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor List</title>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="js/doctorSearch.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script type='text/javascript' src='jquery.particleground.js'></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuBzeYkYimIquGG5KkIcB6vFmtHMUzDFo&signed_in=true&libraries=places&callback=initMap" async defer></script>
+    <script type='text/javascript' src='js/demo.js'></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+<style>
+    #customers {
+        font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    #customers td, #customers th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #customers tr:nth-child(even){background-color: #f2f2f2;}
+
+    #customers tr:hover {background-color: orange;}
+
+    #customers th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #4CAF50;
+        color: white;
+    }
+    td>img {
+        -webkit-border-radius: 20%;
+        -moz-border-radius: 10%;
+        border-radius: 4px;
+    }
+    .header {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        color: black;
+        font-size: 60px;
+        font-family: Lobster, cursive;
+    }
+</style>
+<body>
+<h1 class="header container-fluid text-center">Showing Doctors in your Proximity</h1>
+<div id="content-placeholder"></div>
+<script id="docs-template" type="text/x-handlebars-template">
+    <table id="customers">
+        <tr>
+        <th>Name</th>
+        <th>Qualification</th>
+        <th>Picture</th>
+        </tr>
+        <tbody>
+        {{#data}}
+        <tr>
+            <td><span style="color: green; font-weight: bold; font-size: 20px">{{profile.first_name}} {{profile.last_name}}</span></a><br>
+                <img src="{{ratings.0.image_url_small}}"></img></td>
+            <td>{{profile.title}}</td>
+            <td><img src="{{profile.image_url}}"></img></td>
+        </tr>
+        {{/data}}
+        </tbody>
+    </table>
+</script>
+</body>
+</html>

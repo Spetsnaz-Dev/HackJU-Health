@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+
+   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+  <script type='text/javascript' src='jquery.particleground.js'></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBuBzeYkYimIquGG5KkIcB6vFmtHMUzDFo&signed_in=true&libraries=places&callback=initMap" async defer></script>
+  <script type='text/javascript' src='js/demo.js'></script>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+</head>
+
+<body>
+
+  <body background="https://stmed.net/sites/default/files/medicine-wallpapers-30722-7907678.jpg" style="background-size: cover;">
+<div class="container-fluid">
+  <div class="text-center content-wrap">
+    <h1 class="header" style="font-family: 'Lobster'">Know Your Disease</h1>
+    <input type="text" placeholder="Search..." class="text-area" id="searchTxt">
+    <button id="searchbtn" class="btn btn-default b1 btn-lg" aria-hidden="true">Search</button>
+    <!-- <a class="btn btn-default b2" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" class="link" id="rBtn">Generate Random Article</a> -->
+    <!-- <div><p class="by">by JU</p></div> -->
+    <ul>
+    </ul>
+  </div>
+  <div>
+
+</body>
+
+<style type="text/css" media="screen">
+
+
+    @import url('https://fonts.googleapis.com/css?family=Lobster');
+
+  .header {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    color: #3d3d3d;
+    font-size: 60px;
+    font-family: Lobster, cursive;
+  }
+  a {
+    display: block;
+    margin: 10px;
+    padding: 0 50px;
+    padding: 20px;
+    text-align: justify;
+    color: #000;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  a:hover {
+    color: blue;
+  }
+  ul li {
+    list-style-type: none;
+  }
+  .title {
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+  }
+  a:hover {
+    text-decoration: none;
+    color: #000;
+    border-left: 4px solid #FF8C00;
+    border-right: 4px solid #FF8C00;
+  }
+
+  .content-wrap {
+    padding-top: 40px;
+  }
+  #searchTxt {
+    width: 350px;
+    height: 38px;
+    padding-left: 10px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    outline: none;
+  }
+  .btn-default {
+    margin: 4px;
+    margin-top: 10px;
+    font-size: 16px;
+    border: none;
+    color: black;
+  }
+  .b1 {
+    background-color: #ffaf40;
+  }
+
+  .b1:hover {
+    color: #7158e2;
+  }
+  .b2 {
+    background-color: cornflowerblue;
+  }
+  .by {
+    font-family: fresca;
+    font-size: 20px;
+    font-weight: bold;
+    color: coral;
+  }
+</style>
+
+<script type="text/javascript">
+  
+
+$(document).ready(function() {
+    $("#searchbtn").click(function() {
+      // clearing the content of the list
+      $("ul").empty();
+      var search = $("#searchTxt").val();
+      $.ajax({
+        type: 'GET',
+        url: 'https://en.wikipedia.org/w/api.php?format=json&action=query&generator=search&gsrnamespace=0&gsrlimit=10&prop=extracts&pilimit=max&exintro&explaintext&exsentences=1&exlimit=max&gsrsearch=' + search,
+        dataType: 'jsonp',
+        success: function(result) {
+          console.log(result);
+          var obj = result.query.pages;
+          for (var prop in obj) {
+            $("ul").append('<a target="_blank" href="https://en.wikipedia.org/wiki?curid=' + obj[prop].pageid + '">' + '<li><h3 class="title ">' + obj[prop].title + '</h3><p class="text">' + obj[prop].extract + '</p></li></a>');
+          }
+        }
+      });
+    });
+
+    // starting a search after enter is       //pressed
+    $("#searchTxt").keypress(function(e) {
+      if (e.which == 13) {
+        $("#searchbtn").click();
+      }
+    });
+
+    // removing the outline of the buttons
+    // when clicked
+    $('#searchbtn, #rBtn').click(function() {
+      $(this).blur();
+    });
+  });
+
+</script>
+
+</html>
